@@ -57,10 +57,6 @@ library(RColorBrewer)
 # colocar tudo em caixa baixa
 ADINS_01_12_2022$ementa = tolower(ADINS_01_12_2022$ementa)
 
-# função para retirar os caracteres especiais
-ADINS_01_12_2022$ementa = chartr("áéíóúÁÉÍÓÚýÝàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛãõÃÕñÑäëïöüÄËÏÖÜÿçÇ",
-                          "aeiouaeiouyyaeiouaeiouaeiouaeiouaoaonnaeiouaeiouycc",ADINS_01_12_2022$ementa)
-
 # https://stackoverflow.com/questions/37526550/removing-stopwords-from-a-user-defined-corpus-in-r
 stopwords_regex = paste(stopwords('pt'), collapse = '\\b|\\b')
 stopwords_regex = paste0('\\b', stopwords_regex, '\\b')
@@ -111,22 +107,4 @@ par(mfrow=c(1,2))
 wordcloud(auxCorpus2,max.words=150,random.color = FALSE,colors= c("indianred1","indianred2","indianred3","indianred"))
 wordcloud(auxCorpus3,max.words=150,random.color = FALSE, colors= c("lightsteelblue1","lightsteelblue2","lightsteelblue3","lightsteelblue"))
 
-                          
-                          
-
-# word cloud from dataframe
-# NAO ESTA FUNCIONANDO
-library("stopwords")
-library(tidyverse)
-library(tidytext)
-freq_dataframe <- tibble(ADINS_01_12_2022$ementa) 
-colnames(freq_dataframe) = 'txt'
-freq_dataframe <- freq_dataframe  %>% unnest_tokens(word, text)
-freq_dataframe <- freq_dataframe  %>% anti_join(stopwords("pt"))
-#banco2 = as.character(banco2$ementa)
-#banco2 %>% 
-#  tm::TermDocumentMatrix() %>% 
-#  as.matrix() %>% as.data.frame() %>% 
-#  tibble::rownames_to_column() %>%
-#  dplyr::rename(word = 1, freq = 2) %>%
-#  dplyr::arrange(desc(freq))
+          
