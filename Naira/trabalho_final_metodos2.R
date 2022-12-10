@@ -87,15 +87,15 @@ auxCorpus2 <- Corpus(VectorSource(banco2))
 auxCorpus3 <- Corpus(VectorSource(banco3))
 #auxCorpus3 <- tm_map(auxCorpus3, PlainTextDocument)
 
-auxCorpus2 %>% inspect()
-auxCorpus3 %>% inspect()
+#auxCorpus2 %>% inspect()
+#auxCorpus3 %>% inspect()
 
 auxCorpus <- tm_map(auxCorpus, removePunctuation) 
 #auxCorpus <- tm_map(auxCorpus, removeWords, stopwords('pt')) 
 #auxCorpus <- iconv(tm_map(auxCorpus, removeWords, stopwords('pt')), "latin1", "latin2", "") 
 
 auxCorpus2 <- tm_map(auxCorpus2, removePunctuation) 
-auxCorpus2 <- tm_map(auxCorpus2, removeWords, stopwords('pt')) 
+#auxCorpus2 <- tm_map(auxCorpus2, removeWords, stopwords('pt')) 
 
 #auxCorpus2 <- iconv(tm_map(auxCorpus2, removeWords, stopwords('pt')), "latin1", "latin2", "") 
 
@@ -111,8 +111,6 @@ par(mfrow=c(1,2))
 wordcloud(auxCorpus2,max.words=150,random.color = FALSE,colors= c("indianred1","indianred2","indianred3","indianred"))
 wordcloud(auxCorpus3,max.words=150,random.color = FALSE, colors= c("lightsteelblue1","lightsteelblue2","lightsteelblue3","lightsteelblue"))
 
-wordcloud(auxCorpus2,max.words=200,colors=brewer.pal(9,"Purples")[5:9])                          
-wordcloud(auxCorpus3,max.words=200,colors=brewer.pal(9,"Reds")[5:9])                          
                           
                           
 
